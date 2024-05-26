@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\StudentNameApi\\StudentNameApi.csproj": {}
+    "E:\\Ki 8\\prn231\\StudentNameApi\\StudentNameApi\\StudentNameApi.csproj": {}
   },
   "projects": {
-    "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\Data.csproj": {
+    "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\Data.csproj",
+        "projectUniqueName": "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\WIN10\\.nuget\\packages\\",
-        "outputPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\obj\\",
+        "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\MSI GF63\\.nuget\\packages\\",
+        "outputPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Software\\VS\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\WIN10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MSI GF63\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,11 +38,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -91,24 +85,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Repository\\Repository.csproj": {
+    "E:\\Ki 8\\prn231\\StudentNameApi\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Repository\\Repository.csproj",
+        "projectUniqueName": "E:\\Ki 8\\prn231\\StudentNameApi\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Repository\\Repository.csproj",
-        "packagesPath": "C:\\Users\\WIN10\\.nuget\\packages\\",
-        "outputPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Repository\\obj\\",
+        "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\MSI GF63\\.nuget\\packages\\",
+        "outputPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Software\\VS\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\WIN10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MSI GF63\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -117,15 +111,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\Data.csproj": {
-                "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\Data.csproj"
+              "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\Data.csproj": {
+                "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\Data.csproj"
               }
             }
           }
@@ -134,11 +127,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -160,24 +148,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Service\\Service.csproj": {
+    "E:\\Ki 8\\prn231\\StudentNameApi\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Service\\Service.csproj",
+        "projectUniqueName": "E:\\Ki 8\\prn231\\StudentNameApi\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\WIN10\\.nuget\\packages\\",
-        "outputPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Service\\obj\\",
+        "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\MSI GF63\\.nuget\\packages\\",
+        "outputPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Software\\VS\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\WIN10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MSI GF63\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -186,18 +174,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\Data.csproj": {
-                "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\Data.csproj"
+              "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\Data.csproj": {
+                "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\Data.csproj"
               },
-              "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Repository\\Repository.csproj": {
-                "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Repository\\Repository.csproj"
+              "E:\\Ki 8\\prn231\\StudentNameApi\\Repository\\Repository.csproj": {
+                "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Repository\\Repository.csproj"
               }
             }
           }
@@ -206,11 +193,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -242,24 +224,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\StudentNameApi\\StudentNameApi.csproj": {
+    "E:\\Ki 8\\prn231\\StudentNameApi\\StudentNameApi\\StudentNameApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\StudentNameApi\\StudentNameApi.csproj",
+        "projectUniqueName": "E:\\Ki 8\\prn231\\StudentNameApi\\StudentNameApi\\StudentNameApi.csproj",
         "projectName": "StudentNameApi",
-        "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\StudentNameApi\\StudentNameApi.csproj",
-        "packagesPath": "C:\\Users\\WIN10\\.nuget\\packages\\",
-        "outputPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\StudentNameApi\\obj\\",
+        "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\StudentNameApi\\StudentNameApi.csproj",
+        "packagesPath": "C:\\Users\\MSI GF63\\.nuget\\packages\\",
+        "outputPath": "E:\\Ki 8\\prn231\\StudentNameApi\\StudentNameApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Software\\VS\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\WIN10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\MSI GF63\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -268,21 +250,20 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\Data.csproj": {
-                "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Data\\Data.csproj"
+              "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\Data.csproj": {
+                "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Data\\Data.csproj"
               },
-              "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Repository\\Repository.csproj": {
-                "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Repository\\Repository.csproj"
+              "E:\\Ki 8\\prn231\\StudentNameApi\\Repository\\Repository.csproj": {
+                "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Repository\\Repository.csproj"
               },
-              "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Service\\Service.csproj": {
-                "projectPath": "D:\\workspace\\C#\\prn231\\Ass\\StudentNameApi\\Service\\Service.csproj"
+              "E:\\Ki 8\\prn231\\StudentNameApi\\Service\\Service.csproj": {
+                "projectPath": "E:\\Ki 8\\prn231\\StudentNameApi\\Service\\Service.csproj"
               }
             }
           }
@@ -291,11 +272,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -326,7 +302,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
