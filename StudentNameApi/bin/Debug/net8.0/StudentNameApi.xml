@@ -72,7 +72,7 @@
                      "Password": "your_password"
                  }
              </remarks>
-             <response code="201">Created new product successfully.</response>
+             <response code="201">Created new customer successfully.</response>
         </member>
     </members>
 </doc>

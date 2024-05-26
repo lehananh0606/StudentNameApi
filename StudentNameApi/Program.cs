@@ -54,7 +54,10 @@ namespace StudentNameApi
             // service
 
             builder.Services.AddScoped<ICustomerService, CustomerService>(); // Register ICustomerService and CustomerService
-
+            builder.Services.AddScoped<IRoomTypeService, RoomTypeService>();
+            builder.Services.AddScoped<IBookingDetailService, BookingDetailService>();
+            builder.Services.AddScoped<IRoomInformationService, RoomInformationService>();
+            builder.Services.AddScoped<IBookingReservationService, BookingReservationService>();
             //Repo
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

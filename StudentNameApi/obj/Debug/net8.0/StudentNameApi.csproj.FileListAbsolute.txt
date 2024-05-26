@@ -158,3 +158,17 @@ D:\workspace\C#\prn231\Ass\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Servic
 D:\workspace\C#\prn231\Ass\StudentNameApi\StudentNameApi\obj\Debug\net8.0\StudentNameApi.MvcApplicationPartsAssemblyInfo.cs
 D:\workspace\C#\prn231\Ass\StudentNameApi\StudentNameApi\bin\Debug\net8.0\StudentNameApi.xml
 D:\workspace\C#\prn231\Ass\StudentNameApi\StudentNameApi\obj\Debug\net8.0\StudentNameApi.xml
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Repository.deps.json
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Repository.runtimeconfig.json
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Repository.exe
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Service.deps.json
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Service.runtimeconfig.json
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Service.exe
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\StudentNameApi.xml
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\AutoMapper.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Repository.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Service.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Repository.pdb
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Service.pdb
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\obj\Debug\net8.0\StudentNameApi.xml

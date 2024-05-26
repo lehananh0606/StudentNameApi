@@ -2,6 +2,8 @@
 using Service.ViewModel.Requet;
 using Data.Models;
 using Service.ViewModel.Response;
+using Service.ViewModel.Request;
+using Service.ViewModel.Response.Service.ViewModel.Response;
 
 
 namespace Service.Commons
@@ -13,9 +15,19 @@ namespace Service.Commons
         )
         {
             CreateMap<AccountRequestCreate, Customer>();
-
             CreateMap<Customer, AccountResponse>();
 
+            CreateMap<RoomTypeRequestCreate, RoomType>();
+            CreateMap<RoomType, RoomTypeResponse>();
+
+            CreateMap<BookingDetailRequest, BookingDetail>();
+            CreateMap<BookingDetail, BookingDetailResponse>();
+
+            CreateMap<RoomInformationRequestCreate, RoomInformation>();
+            CreateMap<RoomInformation, RoomInformationResponse>();
+
+            CreateMap<BookingReservationRequestCreate, BookingReservation>();
+            CreateMap<BookingReservation, BookingReservationResponse>();
         }
     }
 }

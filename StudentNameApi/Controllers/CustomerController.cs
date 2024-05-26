@@ -6,7 +6,7 @@ using System.Net;
 
 namespace StudentNameApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/customer-management")]
     [ApiController]
     public class CustomerController :  BaseController
     {
@@ -53,7 +53,7 @@ namespace StudentNameApi.Controllers
         ///         pageIndex=0
         ///         pageSize=10
         /// </remarks>
-        [HttpGet]
+        [HttpGet("customers")]
         public async Task<IActionResult> GetCustomers([FromQuery] string? keyword,
             [FromQuery] int? id,
             [FromQuery] string? CustomerFullName,
@@ -95,7 +95,7 @@ namespace StudentNameApi.Controllers
         ///         GET 
         ///         id = 1
         /// </remarks>
-        [HttpGet("/{id}")]
+        [HttpGet("customers/{id}")]
         public async Task<IActionResult> GetCustomer(int id)
         {
             var response = await _customerService.GetById(id);
@@ -121,7 +121,7 @@ namespace StudentNameApi.Controllers
         ///     }
         /// </remarks>
         /// <response code="201">Created new customer successfully.</response>
-        [HttpPost]
+        [HttpPost("customers")]
          public async Task<IActionResult> CreateCustomer([FromBody] AccountRequestCreate requestCreateModel)
          {
             var response = await _customerService.Create(requestCreateModel);
@@ -130,14 +130,14 @@ namespace StudentNameApi.Controllers
                 : Created($"customer/{response.Payload.CustomerId}", response);
         }
 
-        [HttpPut("/{id}")]
+        [HttpPut("customers/{id}")]
         public async Task<IActionResult> UpdateCustomer(int id, [FromBody] AccountRequestCreate requestModel)
         {
             var response = await _customerService.Update(id, requestModel);
             return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
         }
 
-        [HttpDelete("/{id}")]
+        [HttpDelete("customers/{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
             var response = await _customerService.Delete(id);

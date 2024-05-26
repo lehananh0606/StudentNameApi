@@ -16,5 +16,6 @@ namespace Service.ViewModel.Response
 
         public string EmailAddress { get; set; } = null!;
 
+
     }
 }
