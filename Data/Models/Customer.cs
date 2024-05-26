@@ -15,7 +15,7 @@ public partial class Customer
 
     public DateOnly? CustomerBirthday { get; set; }
 
-    public byte? CustomerStatus { get; set; }
+    public byte? CustomerStatus { get; set; } = 1;
 
     public string? Password { get; set; }
 

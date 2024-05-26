@@ -1,12 +1,14 @@
 ﻿using Data.Models;
 using Microsoft.AspNetCore.Mvc;
-using StudentNameApi.Interface;
+using Service.IServices;
+using Service.ViewModel.Requet;
+using System.Net;
 
 namespace StudentNameApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomerController :  BaseController
     {
         private readonly ICustomerService _customerService;
 
@@ -15,56 +17,131 @@ namespace StudentNameApi.Controllers
             _customerService = customerService;
         }
 
+
+        /// <summary>
+        /// Get customers based on provided filters.
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <param name="id"></param>
+        /// <param name="CustomerFullName"></param>
+        /// <param name="Telephone"></param>
+        /// <param name="EmailAddress"></param>
+        /// <param name="CustomerStatus"></param>
+        /// <param name="CustomerBirthday"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="isAscending"></param>
+        /// <param name="includeProperties"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns>
+        /// A collection of customers matching the specified criteria.
+        /// </returns>
+        /// <remarks>
+        ///     Sample request:
+        ///
+        ///         GET 
+        ///         id = 1
+        ///         id=1
+        ///         CustomerFullName=John Doe
+        ///         Telephone=1234567890
+        ///         EmailAddress=johndoe@example.com
+        ///         CustomerStatus=1
+        ///         CustomerBirthday=2023-05-26
+        ///         orderBy=CustomerFullName
+        ///         isAscending=true
+        ///         includeProperties=Orders,Addresses
+        ///         pageIndex=0
+        ///         pageSize=10
+        /// </remarks>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
+        public async Task<IActionResult> GetCustomers([FromQuery] string? keyword,
+            [FromQuery] int? id,
+            [FromQuery] string? CustomerFullName,
+            [FromQuery] string? Telephone,
+            [FromQuery] string? EmailAddress,
+            [FromQuery] byte? CustomerStatus,
+            [FromQuery] DateOnly? CustomerBirthday,
+            [FromQuery] string? orderBy,
+            [FromQuery] bool? isAscending,
+            [FromQuery] string[]? includeProperties,
+            [FromQuery] int pageIndex = 0,
+            [FromQuery] int pageSize = 10)
         {
-            var customers = await _customerService.GetCustomersAsync();
-            return Ok(customers);
+            var response = await _customerService.GetAll(
+                isAscending: isAscending,
+                filter: x => (!id.HasValue || x.CustomerId == id) &&
+                         (string.IsNullOrEmpty(keyword) || x.CustomerFullName.Contains(keyword) ||
+                          x.EmailAddress.Contains(keyword) || x.Telephone.Contains(keyword)  &&
+                         (string.IsNullOrEmpty(CustomerFullName) || x.CustomerFullName.Contains(CustomerFullName)) &&
+                         (string.IsNullOrEmpty(EmailAddress) || x.EmailAddress.Contains(EmailAddress)) &&
+                         (string.IsNullOrEmpty(Telephone) || x.Telephone.Contains(Telephone)) ),
+                orderBy: orderBy, // Pass the string representation of the property name
+                includeProperties: includeProperties,
+                pageIndex: pageIndex,
+                pageSize: pageSize
+            );
+            return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response); 
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Customer>> GetCustomer(int id)
+
+        /// <summary>
+        /// get customer by id
+        /// </summary>
+        /// <param name="id"> id customer</param>
+        /// <returns> 1 cusomer</returns>
+        /// /// <remarks>
+        ///     Sample request:
+        ///
+        ///         GET 
+        ///         id = 1
+        /// </remarks>
+        [HttpGet("/{id}")]
+        public async Task<IActionResult> GetCustomer(int id)
         {
-            var customer = await _customerService.GetCustomerByIdAsync(id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
-            return Ok(customer);
+            var response = await _customerService.GetById(id);
+            return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
+
         }
 
+        /// <summary>
+        /// create a customer
+        /// </summary>
+        /// <param name="requestCreateModel">model create</param>
+        /// <returns> created customer</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST 
+        ///     {
+        ///         "CustomerFullName": "John Doe",
+        ///         "Telephone": "0912345678",
+        ///         "EmailAddress": "johndoe@example.com",
+        ///         "CustomerBirthday": "1990-01-01",
+        ///         "Password": "your_password"
+        ///     }
+        /// </remarks>
+        /// <response code="201">Created new customer successfully.</response>
         [HttpPost]
-      //  public async Task<ActionResult<Customer>> CreateCustomer(Customer customer)
-        //{
-        //    var createdCustomer = await _customerService.CreateCustomerAsync(customer);
-        //    return CreatedAtAction(nameof(GetCustomer), new { id = createdCustomer.CustomerId }, createdCustomer);
-      //  }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCustomer(int id, Customer customer)
-        {
-            if (id != customer.CustomerId)
-            {
-                return BadRequest();
-            }
-
-            await _customerService.UpdateCustomerAsync(customer);
-
-            return NoContent();
+         public async Task<IActionResult> CreateCustomer([FromBody] AccountRequestCreate requestCreateModel)
+         {
+            var response = await _customerService.Create(requestCreateModel);
+            return response.IsError
+                ? HandleErrorResponse(response.Errors)
+                : Created($"customer/{response.Payload.CustomerId}", response);
         }
 
-        [HttpDelete("{id}")]
+        [HttpPut("/{id}")]
+        public async Task<IActionResult> UpdateCustomer(int id, [FromBody] AccountRequestCreate requestModel)
+        {
+            var response = await _customerService.Update(id, requestModel);
+            return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
+        }
+
+        [HttpDelete("/{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
-            var customerToDelete = await _customerService.GetCustomerByIdAsync(id);
-            if (customerToDelete == null)
-            {
-                return NotFound();
-            }
-
-            await _customerService.DeleteCustomerAsync(id);
-
-            return NoContent();
+            var response = await _customerService.Delete(id);
+            return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
         }
     }
 }
