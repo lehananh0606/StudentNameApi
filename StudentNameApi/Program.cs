@@ -1,3 +1,13 @@
+using Data.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using ProjectAPI.Services;
+using StudentNameApi.Interface;
+using Data.Repositories;
 
 namespace StudentNameApi
 {
@@ -8,11 +18,24 @@ namespace StudentNameApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Your API Name", Version = "v1" });
+            });
+
+            string dbContext = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<FuminiHotelManagementContext>(options =>
+            {
+                options.UseSqlServer(dbContext);
+            });
+            builder.Services.AddScoped<ICustomerService, CustomerService>(); // Register ICustomerService and CustomerService
+
+            builder.Services.AddSession();
+            builder.Services.AddScoped<CustomerRepository>();
+            builder.Services.AddDistributedMemoryCache();
+
 
             var app = builder.Build();
 
