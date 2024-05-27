@@ -48,19 +48,15 @@ namespace Service.Services
             return result;
         }
 
-        public async Task<OperationResult<BookingDetailResponse>> GetBookingDetailById(int bookingDetailId)
+        public async Task<OperationResult<IEnumerable<BookingDetailResponse>>> GetByBookingReservationId(int bookingReservationId)
         {
-            var result = new OperationResult<BookingDetailResponse>();
+            var result = new OperationResult<IEnumerable<BookingDetailResponse>>();
             try
             {
-                var entity = await _unitOfWork.bookingDetailRepository.GetByIdAsync(bookingDetailId);
-                if (entity == null)
-                {
-                    result.AddError(StatusCode.NotFound, "Booking detail not found");
-                    return result;
-                }
-                result.Payload = _mapper.Map<BookingDetailResponse>(entity);
+                var entities = await _unitOfWork.bookingDetailRepository.GetByBookingReservationIdAsync(bookingReservationId);
+                result.Payload = _mapper.Map<IEnumerable<BookingDetailResponse>>(entities);
                 result.StatusCode = StatusCode.Ok;
+                result.Message = "Get booking details by BookingReservationId successfully";
             }
             catch (Exception ex)
             {
@@ -70,5 +66,6 @@ namespace Service.Services
 
             return result;
         }
+
     }
 }

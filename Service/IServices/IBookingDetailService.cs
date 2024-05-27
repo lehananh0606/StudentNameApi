@@ -19,6 +19,6 @@ namespace Service.IServices
             int pageSize = 10
         );
 
-        Task<OperationResult<BookingDetailResponse>> GetBookingDetailById(int bookingDetailId);
+        Task<OperationResult<IEnumerable<BookingDetailResponse>>> GetByBookingReservationId(int bookingReservationId);
     }
 }

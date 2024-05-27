@@ -179,6 +179,17 @@ namespace Repository.GenericRepository
             return await FindAll(includeProperties).SingleOrDefaultAsync(predicate);
         }
 
+        public async Task<IEnumerable<TEntity>> GetByBookingReservationIdAsync(int bookingReservationId, params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            IQueryable<TEntity> query = _dbSet;
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+            return await query.Where(e => (e as BookingDetail).BookingReservationId == bookingReservationId).ToListAsync();
+        }
+
+
         /*public async Task<IReadOnlyList<T>> ListAsync(ISpecifications<T> specification)
         {
             return await ApplySpecification(specification).ToListAsync();

@@ -172,3 +172,9 @@ E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Service.dll
 E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Repository.pdb
 E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Service.pdb
 E:\Ki 8\prn231\StudentNameApi\StudentNameApi\obj\Debug\net8.0\StudentNameApi.xml
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

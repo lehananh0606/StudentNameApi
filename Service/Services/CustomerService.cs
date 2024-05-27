@@ -188,6 +188,29 @@ namespace Service.Services
             return result;
         }
 
+        public async Task<OperationResult<IEnumerable<AccountResponse>>> Search(string keyword, int pageIndex = 0, int pageSize = 10)
+        {
+            var result = new OperationResult<IEnumerable<AccountResponse>>();
+            try
+            {
+                var entities = await _unitOfWork.customerRepository.FindAsync(
+                    c => c.CustomerFullName.Contains(keyword) ||
+                         c.EmailAddress.Contains(keyword) ||
+                         c.Telephone.Contains(keyword),
+                    pageIndex,
+                    pageSize
+                );
+                result.Payload = _mapper.Map<IEnumerable<AccountResponse>>(entities);
+                result.StatusCode = StatusCode.Ok;
+                result.Message = "Search customers successfully";
+            }
+            catch (Exception ex)
+            {
+                result.AddUnknownError(ex.Message);
+                throw;
+            }
 
+            return result;
+        }
     }
 }

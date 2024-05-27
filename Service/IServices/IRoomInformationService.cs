@@ -17,5 +17,6 @@ namespace Service.IServices
         Task<OperationResult<RoomInformationResponse>> Create(RoomInformationRequestCreate objectRequestCreate);
         Task<OperationResult<bool>> Delete(int id);
         Task<OperationResult<RoomInformationResponse>> Update(int id, RoomInformationRequestCreate objectRequestUpdate);
+        Task<OperationResult<IEnumerable<RoomInformationResponse>>> Search(string keyword, int pageIndex = 0, int pageSize = 10);
     }
 }

@@ -130,6 +130,25 @@ namespace StudentNameApi.Controllers
                 : Created($"customer/{response.Payload.CustomerId}", response);
         }
 
+
+        /// <summary>
+        /// Update customer information.
+        /// </summary>
+        /// <param name="id">The ID of the customer to update.</param>
+        /// <param name="requestModel">The model containing updated customer information.</param>
+        /// <returns>The updated customer information.</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     PUT 
+        ///     {
+        ///         "CustomerFullName": "Jane Doe",
+        ///         "Telephone": "0987654321",
+        ///         "EmailAddress": "janedoe@example.com",
+        ///         "CustomerBirthday": "1995-08-15",
+        ///         "Password": "new_password"
+        ///     }
+        /// </remarks>
         [HttpPut("customers/{id}")]
         public async Task<IActionResult> UpdateCustomer(int id, [FromBody] AccountRequestCreate requestModel)
         {
@@ -137,10 +156,31 @@ namespace StudentNameApi.Controllers
             return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
         }
 
+
+        /// <summary>
+        /// Delete customer information by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the customer to delete.</param>
+        /// <returns>The result of the deletion operation.</returns>
         [HttpDelete("customers/{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
             var response = await _customerService.Delete(id);
+            return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
+        }
+
+
+        /// <summary>
+        /// Search for customers by keyword.
+        /// </summary>
+        /// <param name="keyword">The keyword to search for in customer information.</param>
+        /// <param name="pageIndex">The index of the page to retrieve.</param>
+        /// <param name="pageSize">The size of the page.</param>
+        /// <returns>A collection of customers matching the search criteria.</returns>
+        [HttpGet("customers/search")]
+        public async Task<IActionResult> SearchCustomers([FromQuery] string keyword, [FromQuery] int pageIndex = 0, [FromQuery] int pageSize = 10)
+        {
+            var response = await _customerService.Search(keyword, pageIndex, pageSize);
             return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
         }
     }

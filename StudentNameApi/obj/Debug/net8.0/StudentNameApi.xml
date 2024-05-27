@@ -4,6 +4,124 @@
         <name>StudentNameApi</name>
     </assembly>
     <members>
+        <member name="M:StudentNameApi.Controllers.BookingDetailController.GetBookingDetails(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateOnly},System.Nullable{System.DateOnly},System.String,System.Nullable{System.Boolean},System.String[],System.Int32,System.Int32)">
+             <summary>
+             Get booking details based on provided filters.
+             </summary>
+             <param name="keyword"></param>
+             <param name="id"></param>
+             <param name="roomId"></param>
+             <param name="startDate"></param>
+             <param name="endDate"></param>
+             <param name="orderBy"></param>
+             <param name="isAscending"></param>
+             <param name="includeProperties"></param>
+             <param name="pageIndex"></param>
+             <param name="pageSize"></param>
+             <returns>
+             A collection of booking details matching the specified criteria.
+             </returns>
+             <remarks>
+             Sample request:
+            
+                 GET 
+                 id = 1
+                 roomId=1
+                 startDate=2024-01-01
+                 endDate=2024-01-15
+                 orderBy=Room.RoomNumber
+                 isAscending=true
+                 includeProperties=Room
+                 pageIndex=0
+                 pageSize=10
+             </remarks>
+        </member>
+        <member name="M:StudentNameApi.Controllers.BookingDetailController.GetBookingDetail(System.Int32)">
+             <summary>
+             Get booking detail by ID.
+             </summary>
+             <param name="id">The ID of the booking detail.</param>
+             <returns>The booking detail with the specified ID.</returns>
+             <remarks>
+             Sample request:
+            
+                 GET 
+                 id = 1
+             </remarks>
+        </member>
+        <member name="M:StudentNameApi.Controllers.BookingReservationController.GetBookingReservations(System.String,System.Nullable{System.Int32},System.Nullable{System.DateOnly},System.Nullable{System.Decimal},System.Nullable{System.Int32},System.Nullable{System.Byte},System.String[],System.String,System.Nullable{System.Boolean},System.Int32,System.Int32)">
+            <summary>
+            Get booking reservations based on provided filters.
+            </summary>
+            <param name="keyword"></param>
+            <param name="id"></param>
+            <param name="bookingDate"></param>
+            <param name="totalPrice"></param>
+            <param name="customerId"></param>
+            <param name="bookingStatus"></param>
+            <param name="includeProperties"></param>
+            <param name="orderBy"></param>
+            <param name="isAscending"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns>
+            A collection of booking reservations matching the specified criteria.
+            </returns>
+            <remarks>
+            Sample request:
+                GET 
+                id=1
+                bookingDate=2023-05-26
+                totalPrice=100.50
+                customerId=5
+                bookingStatus=1
+                orderBy=bookingDate
+                isAscending=true
+                includeProperties=Customer,Room
+                pageIndex=0
+                pageSize=10
+            </remarks>
+        </member>
+        <member name="M:StudentNameApi.Controllers.BookingReservationController.GetBookingReservation(System.Int32)">
+            <summary>
+            Get a booking reservation by its ID.
+            </summary>
+            <param name="id">The ID of the booking reservation.</param>
+            <returns>The booking reservation with the specified ID.</returns>
+        </member>
+        <member name="M:StudentNameApi.Controllers.BookingReservationController.CreateBookingReservation(Service.ViewModel.Requet.BookingReservationRequestCreate)">
+            <summary>
+            Create a new booking reservation.
+            </summary>
+            <param name="requestModel">The model containing information to create the booking reservation.</param>
+            <returns>The newly created booking reservation.</returns>
+            <remarks>
+            Sample request:
+                POST 
+                {
+                    "BookingDate": "2023-05-26",
+                    "TotalPrice": 100.50,
+                    "CustomerId": 5,
+                    "BookingStatus": 1
+                }
+            </remarks>
+            <response code="201">Created new booking reservation successfully.</response>
+        </member>
+        <member name="M:StudentNameApi.Controllers.BookingReservationController.UpdateBookingReservation(System.Int32,Service.ViewModel.Requet.BookingReservationRequestCreate)">
+            <summary>
+            Update an existing booking reservation.
+            </summary>
+            <param name="id">The ID of the booking reservation to update.</param>
+            <param name="requestModel">The model containing updated information.</param>
+            <returns>The updated booking reservation.</returns>
+        </member>
+        <member name="M:StudentNameApi.Controllers.BookingReservationController.DeleteBookingReservation(System.Int32)">
+            <summary>
+            Delete a booking reservation.
+            </summary>
+            <param name="id">The ID of the booking reservation to delete.</param>
+            <returns>An action result indicating success or failure.</returns>
+        </member>
         <member name="M:StudentNameApi.Controllers.CustomerController.GetCustomers(System.String,System.Nullable{System.Int32},System.String,System.String,System.String,System.Nullable{System.Byte},System.Nullable{System.DateOnly},System.String,System.Nullable{System.Boolean},System.String[],System.Int32,System.Int32)">
              <summary>
              Get customers based on provided filters.
@@ -73,6 +191,186 @@
                  }
              </remarks>
              <response code="201">Created new customer successfully.</response>
+        </member>
+        <member name="M:StudentNameApi.Controllers.CustomerController.UpdateCustomer(System.Int32,Service.ViewModel.Requet.AccountRequestCreate)">
+             <summary>
+             Update customer information.
+             </summary>
+             <param name="id">The ID of the customer to update.</param>
+             <param name="requestModel">The model containing updated customer information.</param>
+             <returns>The updated customer information.</returns>
+             <remarks>
+             Sample request:
+            
+                 PUT 
+                 {
+                     "CustomerFullName": "Jane Doe",
+                     "Telephone": "0987654321",
+                     "EmailAddress": "janedoe@example.com",
+                     "CustomerBirthday": "1995-08-15",
+                     "Password": "new_password"
+                 }
+             </remarks>
+        </member>
+        <member name="M:StudentNameApi.Controllers.CustomerController.DeleteCustomer(System.Int32)">
+            <summary>
+            Delete customer information by its ID.
+            </summary>
+            <param name="id">The ID of the customer to delete.</param>
+            <returns>The result of the deletion operation.</returns>
+        </member>
+        <member name="M:StudentNameApi.Controllers.CustomerController.SearchCustomers(System.String,System.Int32,System.Int32)">
+            <summary>
+            Search for customers by keyword.
+            </summary>
+            <param name="keyword">The keyword to search for in customer information.</param>
+            <param name="pageIndex">The index of the page to retrieve.</param>
+            <param name="pageSize">The size of the page.</param>
+            <returns>A collection of customers matching the search criteria.</returns>
+        </member>
+        <member name="M:StudentNameApi.Controllers.RoomInformationController.GetRoomInformation(System.String,System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Byte},System.Nullable{System.Decimal},System.String,System.Nullable{System.Boolean},System.String[],System.Int32,System.Int32)">
+            <summary>
+            Get room information based on provided filters.
+            </summary>
+            <param name="keyword"></param>
+            <param name="id"></param>
+            <param name="RoomNumber"></param>
+            <param name="RoomDetailDescription"></param>
+            <param name="RoomMaxCapacity"></param>
+            <param name="RoomTypeId"></param>
+            <param name="RoomStatus"></param>
+            <param name="RoomPricePerDay"></param>
+            <param name="orderBy"></param>
+            <param name="isAscending"></param>
+            <param name="includeProperties"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns>
+            A collection of room information matching the specified criteria.
+            </returns>
+            <remarks>
+            Sample request:
+                GET 
+                id=1
+                RoomNumber=101
+                RoomDetailDescription=Deluxe Room
+                RoomMaxCapacity=2
+                RoomTypeId=3
+                RoomStatus=1
+                RoomPricePerDay=100.00
+                orderBy=RoomNumber
+                isAscending=true
+                includeProperties=RoomType
+                pageIndex=0
+                pageSize=10
+            </remarks>
+        </member>
+        <member name="M:StudentNameApi.Controllers.RoomInformationController.GetRoomInformationById(System.Int32)">
+            <summary>
+            Get room information by its ID.
+            </summary>
+            <param name="id">The ID of the room.</param>
+            <returns>The room information with the specified ID.</returns>
+        </member>
+        <member name="M:StudentNameApi.Controllers.RoomInformationController.CreateRoomInformation(Service.ViewModel.Request.RoomInformationRequestCreate)">
+            <summary>
+            Create a new room information.
+            </summary>
+            <param name="requestCreateModel">The model containing information to create the room.</param>
+            <returns>The newly created room information.</returns>
+            <remarks>
+            Sample request:
+                POST 
+                {
+                    "RoomNumber": "101",
+                    "RoomDetailDescription": "Deluxe Room",
+                    "RoomMaxCapacity": 2,
+                    "RoomTypeId": 3,
+                    "RoomStatus": 1,
+                    "RoomPricePerDay": 100.00
+                }
+            </remarks>
+            <response code="201">Created new room information successfully.</response>
+        </member>
+        <member name="M:StudentNameApi.Controllers.RoomInformationController.UpdateRoomInformation(System.Int32,Service.ViewModel.Request.RoomInformationRequestCreate)">
+            <summary>
+            Update an existing room information.
+            </summary>
+            <param name="id">The ID of the room to update.</param>
+            <param name="requestModel">The model containing updated information for the room.</param>
+            <returns>The updated room information.</returns>
+            <remarks>
+            Sample request:
+            PUT
+            {
+            "RoomNumber": "101",
+            "RoomDetailDescription": "Spacious room with city view",
+            "RoomMaxCapacity": 2,
+            "RoomTypeId": 1,
+            "RoomStatus": 1,
+            "RoomPricePerDay": 120.00
+            }
+            </remarks>
+        </member>
+        <member name="M:StudentNameApi.Controllers.RoomInformationController.DeleteRoomInformation(System.Int32)">
+            <summary>
+            Delete room information by its ID.
+            </summary>
+            <param name="id">The ID of the room to delete.</param>
+            <returns>The result of the deletion operation.</returns>
+        </member>
+        <member name="M:StudentNameApi.Controllers.RoomInformationController.SearchRooms(System.String,System.Int32,System.Int32)">
+            <summary>
+            Search for rooms by keyword.
+            </summary>
+            <param name="keyword">The keyword to search for in room information.</param>
+            <param name="pageIndex">The index of the page to retrieve.</param>
+            <param name="pageSize">The size of the page.</param>
+            <returns>A collection of rooms matching the search criteria.</returns>
+        </member>
+        <member name="M:StudentNameApi.Controllers.RoomTypeController.GetRoomTypes(System.String,System.Nullable{System.Int32},System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.String[],System.Int32,System.Int32)">
+             <summary>
+             Get room types based on provided filters.
+             </summary>
+             <param name="keyword">The keyword to search for in room type names, descriptions, or notes.</param>
+             <param name="id">The ID of the room type to retrieve.</param>
+             <param name="roomTypeName">The name of the room type to search for.</param>
+             <param name="typeDescription">The description of the room type to search for.</param>
+             <param name="typeNote">The note of the room type to search for.</param>
+             <param name="orderBy">The property to order the results by.</param>
+             <param name="isAscending">Indicates whether to sort the results in ascending order.</param>
+             <param name="includeProperties">The related entities to include in the result.</param>
+             <param name="pageIndex">The index of the page to retrieve.</param>
+             <param name="pageSize">The size of each page.</param>
+             <returns>A collection of room types matching the specified criteria.</returns>
+             <remarks>
+             Sample request:
+            
+                 GET 
+                 keyword=double
+                 id=1
+                 roomTypeName=Double
+                 typeDescription=Spacious
+                 typeNote=Extra
+                 orderBy=roomTypeName
+                 isAscending=true
+                 includeProperties=Rooms
+                 pageIndex=0
+                 pageSize=10
+             </remarks>
+        </member>
+        <member name="M:StudentNameApi.Controllers.RoomTypeController.GetRoomType(System.Int32)">
+             <summary>
+             Get room type by ID.
+             </summary>
+             <param name="id">The ID of the room type.</param>
+             <returns>The room type with the specified ID.</returns>
+             <remarks>
+             Sample request:
+            
+                 GET 
+                 id = 1
+             </remarks>
         </member>
     </members>
 </doc>

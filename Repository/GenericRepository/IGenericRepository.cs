@@ -25,5 +25,6 @@ namespace Repository.GenericRepository
         IQueryable<TEntity> FilterByExpression(Expression<Func<TEntity, bool>> predicate, string[]? includeProperties = null);
         
         Task<TEntity?> FindSingleAsync(Expression<Func<TEntity, bool>>? predicate, params Expression<Func<TEntity, object>>[]? includeProperties);
+        Task<IEnumerable<TEntity>> GetByBookingReservationIdAsync(int bookingReservationId, params Expression<Func<TEntity, object>>[] includeProperties);
     }
 }

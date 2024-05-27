@@ -44,6 +44,7 @@ public partial class FuminiHotelManagementContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<BookingDetail>(entity =>
         {
             entity.HasKey(e => new { e.BookingReservationId, e.RoomId });

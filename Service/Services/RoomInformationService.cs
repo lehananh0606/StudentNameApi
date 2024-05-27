@@ -173,5 +173,31 @@ namespace Service.Services
 
             return result;
         }
+
+        public async Task<OperationResult<IEnumerable<RoomInformationResponse>>> Search(string keyword, int pageIndex = 0, int pageSize = 10)
+        {
+            var result = new OperationResult<IEnumerable<RoomInformationResponse>>();
+            try
+            {
+                var entities = await _unitOfWork.roomRepository.FindAsync(
+                    r => r.RoomNumber.Contains(keyword) ||
+                         r.RoomDetailDescription.Contains(keyword),
+                    pageIndex,
+                    pageSize
+                );
+                result.Payload = _mapper.Map<IEnumerable<RoomInformationResponse>>(entities);
+                result.StatusCode = StatusCode.Ok;
+                result.Message = "Search room informations successfully";
+            }
+            catch (Exception ex)
+            {
+                result.AddUnknownError(ex.Message);
+                throw;
+            }
+
+            return result;
+        }
     }
+
+
 }

@@ -18,5 +18,6 @@ namespace Service.IServices
         Task<OperationResult<AccountResponse>> Create(AccountRequestCreate objectRequestCreate);
         Task<OperationResult<bool>> Delete(int id);
         Task<OperationResult<AccountResponse>> Update(int id, AccountRequestCreate objectRequestUpdate);
+        Task<OperationResult<IEnumerable<AccountResponse>>> Search(string keyword, int pageIndex = 0, int pageSize = 10);
     }
 }
