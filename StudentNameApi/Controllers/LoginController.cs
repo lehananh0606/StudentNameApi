@@ -16,6 +16,20 @@ namespace StudentNameApi.Controllers
             _customerService = customerService;
         }
 
+
+        /// <remarks>
+        ///     Sample request:
+        ///
+        ///         GET 
+        ///         email = admin@FUMiniHotelSystem.com
+        ///         passwork=@@abc123@@
+        ///         ROLE Admin
+        ///         
+        ///         email = WilliamShakespeare@FUMiniHotel.org
+        ///         passwork = 123@
+        ///         ROLE User
+        /// 
+        /// </remarks>
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginRequest loginRequest)
         {

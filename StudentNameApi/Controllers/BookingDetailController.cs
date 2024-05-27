@@ -37,16 +37,16 @@ namespace StudentNameApi.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET 
-        ///     id = 1
-        ///     roomId=1
-        ///     startDate=2024-01-01
-        ///     endDate=2024-01-15
-        ///     orderBy=Room.RoomNumber
-        ///     isAscending=true
-        ///     includeProperties=Room
-        ///     pageIndex=0
-        ///     pageSize=10
+        ///        GET 
+        ///        id = 1
+        ///        roomId=1
+        ///        startDate=2024-01-01
+        ///        endDate=2024-01-15
+        ///        orderBy=Room.RoomNumber
+        ///        isAscending=true
+        ///        includeProperties=Room
+        ///        pageIndex=0
+        ///        pageSize=10
         /// </remarks>
         [HttpGet("booking-details")]
         [Authorize(Roles = "Admin")]
@@ -86,8 +86,8 @@ namespace StudentNameApi.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET 
-        ///     id = 1
+        ///       GET 
+        ///       id = 1
         /// </remarks>
         [HttpGet("booking-details/{bookingReservationId:int}")]
         [Authorize(Roles = "Admin")]

@@ -37,24 +37,23 @@ namespace StudentNameApi.Controllers
         /// <param name="includeProperties"></param>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
-        /// <returns>
-        /// A collection of room information matching the specified criteria.
-        /// </returns>
         /// <remarks>
-        /// Sample request:
-        ///     GET 
-        ///     id=1
-        ///     RoomNumber=101
-        ///     RoomDetailDescription=Deluxe Room
-        ///     RoomMaxCapacity=2
-        ///     RoomTypeId=3
-        ///     RoomStatus=1
-        ///     RoomPricePerDay=100.00
-        ///     orderBy=RoomNumber
-        ///     isAscending=true
-        ///     includeProperties=RoomType
-        ///     pageIndex=0
-        ///     pageSize=10
+        ///     Sample request:
+        ///
+        ///         GET 
+        ///         keyword=1
+        ///         id=1
+        ///         RoomNumber=101
+        ///         RoomDetailDescription=Deluxe Room
+        ///         RoomMaxCapacity=2
+        ///         RoomTypeId=3
+        ///         RoomStatus=1
+        ///         RoomPricePerDay=100.00
+        ///         orderBy=RoomNumber
+        ///         isAscending=true
+        ///         includeProperties=RoomType
+        ///         pageIndex=0
+        ///         pageSize=10
         /// </remarks>
         [HttpGet("rooms")]
         public async Task<IActionResult> GetRoomInformation([FromQuery] string? keyword,
@@ -109,18 +108,19 @@ namespace StudentNameApi.Controllers
         /// <param name="requestCreateModel">The model containing information to create the room.</param>
         /// <returns>The newly created room information.</returns>
         /// <remarks>
-        /// Sample request:
-        ///     POST 
-        ///     {
+        ///     Sample request:
+        ///       
+        ///         POST 
+        ///         {
         ///         "RoomNumber": "101",
         ///         "RoomDetailDescription": "Deluxe Room",
         ///         "RoomMaxCapacity": 2,
         ///         "RoomTypeId": 3,
         ///         "RoomStatus": 1,
         ///         "RoomPricePerDay": 100.00
-        ///     }
-        /// </remarks>
-        /// <response code="201">Created new room information successfully.</response>
+        ///         }
+        ///  </remarks>
+        
         [HttpPost("rooms")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRoomInformation([FromBody] RoomInformationRequestCreate requestCreateModel)
@@ -139,16 +139,17 @@ namespace StudentNameApi.Controllers
         /// <param name="requestModel">The model containing updated information for the room.</param>
         /// <returns>The updated room information.</returns>
         /// <remarks>
-        /// Sample request:
-        /// PUT
-        /// {
-        /// "RoomNumber": "101",
-        /// "RoomDetailDescription": "Spacious room with city view",
-        /// "RoomMaxCapacity": 2,
-        /// "RoomTypeId": 1,
-        /// "RoomStatus": 1,
-        /// "RoomPricePerDay": 120.00
-        /// }
+        ///     Sample request:
+        ///       
+        ///         PUT
+        ///         {
+        ///         "RoomNumber": "101",
+        ///         "RoomDetailDescription": "Spacious room with city view",
+        ///         "RoomMaxCapacity": 2,
+        ///         "RoomTypeId": 1,
+        ///         "RoomStatus": 1,
+        ///         "RoomPricePerDay": 120.00
+        ///         }
         /// </remarks>
         [HttpPut("rooms/{id:int}")]
         [Authorize(Roles = "Admin")]

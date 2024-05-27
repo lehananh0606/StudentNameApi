@@ -45,6 +45,9 @@ namespace StudentNameApi
                 });
 
                 options.OperationFilter<SecurityRequirementsOperationFilter>();
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                options.IncludeXmlComments(xmlPath);
             });
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
@@ -80,6 +83,7 @@ namespace StudentNameApi
             builder.Services.AddScoped<IBookingDetailService, BookingDetailService>();
             builder.Services.AddScoped<IRoomInformationService, RoomInformationService>();
             builder.Services.AddScoped<IBookingReservationService, BookingReservationService>();
+            builder.Services.AddScoped<IBookingReportService, BookingReportService>();
             //Repo
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

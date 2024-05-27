@@ -20,7 +20,12 @@ namespace Service.Commons
             CreateMap<Customer, LoginResponse>().ReverseMap();
             CreateMap<Customer, AccountResponse>().ReverseMap();
 
-           
+            CreateMap<BookingDetail, BookingReport>()
+                 .ForMember(dest => dest.StartDate, opt => opt.MapFrom(src => src.StartDate.ToDateTime(TimeOnly.MinValue)))
+                 .ForMember(dest => dest.EndDate, opt => opt.MapFrom(src => src.EndDate.ToDateTime(TimeOnly.MinValue)))
+                 .ForMember(dest => dest.TotalPrice, opt => opt.MapFrom(src => src.BookingReservation.TotalPrice))
+                 .ForMember(dest => dest.CustomerId, opt => opt.MapFrom(src => src.BookingReservation.CustomerId))
+                 .ForMember(dest => dest.BookingStatus, opt => opt.MapFrom(src => src.BookingReservation.BookingStatus));
 
             CreateMap<RoomTypeRequestCreate, RoomType>();
             CreateMap<RoomType, RoomTypeResponse>();

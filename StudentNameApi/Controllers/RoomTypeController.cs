@@ -35,17 +35,17 @@ namespace StudentNameApi.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET 
-        ///     keyword=double
-        ///     id=1
-        ///     roomTypeName=Double
-        ///     typeDescription=Spacious
-        ///     typeNote=Extra
-        ///     orderBy=roomTypeName
-        ///     isAscending=true
-        ///     includeProperties=Rooms
-        ///     pageIndex=0
-        ///     pageSize=10
+        ///        GET 
+        ///        keyword=double
+        ///        id=1
+        ///        roomTypeName=Double
+        ///        typeDescription=Spacious
+        ///        typeNote=Extra
+        ///        orderBy=roomTypeName
+        ///        isAscending=true
+        ///        includeProperties=Rooms
+        ///        pageIndex=0
+        ///        pageSize=10
         /// </remarks>
 
         [HttpGet("room-types")]
@@ -85,8 +85,8 @@ namespace StudentNameApi.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     GET 
-        ///     id = 1
+        ///       GET 
+        ///       id = 1
         /// </remarks>
         [HttpGet("room-types/{id:int}")]
         public async Task<IActionResult> GetRoomType(int id)

@@ -38,20 +38,21 @@ namespace StudentNameApi.Controllers
         /// <returns>
         /// A collection of booking reservations matching the specified criteria.
         /// </returns>
-        /// <remarks>
-        /// Sample request:
-        ///     GET 
-        ///     id=1
-        ///     bookingDate=2023-05-26
-        ///     totalPrice=100.50
-        ///     customerId=5
-        ///     bookingStatus=1
-        ///     orderBy=bookingDate
-        ///     isAscending=true
-        ///     includeProperties=Customer,Room
-        ///     pageIndex=0
-        ///     pageSize=10
-        /// </remarks>
+        ///  <remarks>
+        ///     Sample request:
+        ///        
+        ///         GET 
+        ///         id=1
+        ///         bookingDate=2023-05-26
+        ///         totalPrice=100.50
+        ///         customerId=5
+        ///         bookingStatus=1
+        ///         orderBy=bookingDate
+        ///         isAscending=true
+        ///         includeProperties=Customer,Room
+        ///         pageIndex=0
+        ///         pageSize=10
+        ///  </remarks>
         [HttpGet("booking-reservations")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetBookingReservations([FromQuery] string? keyword,
@@ -105,17 +106,18 @@ namespace StudentNameApi.Controllers
         /// </summary>
         /// <param name="requestModel">The model containing information to create the booking reservation.</param>
         /// <returns>The newly created booking reservation.</returns>
-        /// <remarks>
-        /// Sample request:
-        ///     POST 
-        ///     {
+        ///  <remarks>
+        ///     Sample request:
+        ///       
+        ///         POST 
+        ///         {   
         ///         "BookingDate": "2023-05-26",
         ///         "TotalPrice": 100.50,
         ///         "CustomerId": 5,
         ///         "BookingStatus": 1
-        ///     }
-        /// </remarks>
-        /// <response code="201">Created new booking reservation successfully.</response>
+        ///         }
+        ///  </remarks>
+      
         [HttpPost("booking-reservations")]
         
         public async Task<IActionResult> CreateBookingReservation([FromBody] BookingReservationRequestCreate requestModel)

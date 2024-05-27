@@ -24,16 +24,16 @@
              <remarks>
              Sample request:
             
-                 GET 
-                 id = 1
-                 roomId=1
-                 startDate=2024-01-01
-                 endDate=2024-01-15
-                 orderBy=Room.RoomNumber
-                 isAscending=true
-                 includeProperties=Room
-                 pageIndex=0
-                 pageSize=10
+                    GET 
+                    id = 1
+                    roomId=1
+                    startDate=2024-01-01
+                    endDate=2024-01-15
+                    orderBy=Room.RoomNumber
+                    isAscending=true
+                    includeProperties=Room
+                    pageIndex=0
+                    pageSize=10
              </remarks>
         </member>
         <member name="M:StudentNameApi.Controllers.BookingDetailController.GetBookingDetail(System.Int32)">
@@ -45,8 +45,23 @@
              <remarks>
              Sample request:
             
-                 GET 
-                 id = 1
+                   GET 
+                   id = 1
+             </remarks>
+        </member>
+        <member name="M:StudentNameApi.Controllers.BookingReportController.GetBookingReport(System.DateTime,System.DateTime)">
+             <summary>
+             Get booking report for a specified date range.
+             </summary>
+             <param name="startDate">The start date of the report period.</param>
+             <param name="endDate">The end date of the report period.</param>
+             <returns>A report of bookings within the specified date range.</returns>
+             <remarks>
+                 Sample request:
+            
+                     GET 
+                     StartDate = 1999-01-01T00:00:00Z
+                     EndDate = 2023-01-01T00:00:00Z
              </remarks>
         </member>
         <member name="M:StudentNameApi.Controllers.BookingReservationController.GetBookingReservations(System.String,System.Nullable{System.Int32},System.Nullable{System.DateOnly},System.Nullable{System.Decimal},System.Nullable{System.Int32},System.Nullable{System.Byte},System.String[],System.String,System.Nullable{System.Boolean},System.Int32,System.Int32)">
@@ -67,20 +82,21 @@
             <returns>
             A collection of booking reservations matching the specified criteria.
             </returns>
-            <remarks>
-            Sample request:
-                GET 
-                id=1
-                bookingDate=2023-05-26
-                totalPrice=100.50
-                customerId=5
-                bookingStatus=1
-                orderBy=bookingDate
-                isAscending=true
-                includeProperties=Customer,Room
-                pageIndex=0
-                pageSize=10
-            </remarks>
+             <remarks>
+                Sample request:
+                   
+                    GET 
+                    id=1
+                    bookingDate=2023-05-26
+                    totalPrice=100.50
+                    customerId=5
+                    bookingStatus=1
+                    orderBy=bookingDate
+                    isAscending=true
+                    includeProperties=Customer,Room
+                    pageIndex=0
+                    pageSize=10
+             </remarks>
         </member>
         <member name="M:StudentNameApi.Controllers.BookingReservationController.GetBookingReservation(System.Int32)">
             <summary>
@@ -95,17 +111,17 @@
             </summary>
             <param name="requestModel">The model containing information to create the booking reservation.</param>
             <returns>The newly created booking reservation.</returns>
-            <remarks>
-            Sample request:
-                POST 
-                {
+             <remarks>
+                Sample request:
+                  
+                    POST 
+                    {   
                     "BookingDate": "2023-05-26",
                     "TotalPrice": 100.50,
                     "CustomerId": 5,
                     "BookingStatus": 1
-                }
-            </remarks>
-            <response code="201">Created new booking reservation successfully.</response>
+                    }
+             </remarks>
         </member>
         <member name="M:StudentNameApi.Controllers.BookingReservationController.UpdateBookingReservation(System.Int32,Service.ViewModel.Request.BookingReservationRequestCreate)">
             <summary>
@@ -228,42 +244,56 @@
             <param name="pageSize">The size of the page.</param>
             <returns>A collection of customers matching the search criteria.</returns>
         </member>
+        <member name="M:StudentNameApi.Controllers.LoginController.Login(Service.ViewModel.Requet.LoginRequest)">
+             <remarks>
+                 Sample request:
+            
+                     GET 
+                     email = admin@FUMiniHotelSystem.com
+                     passwork=@@abc123@@
+                     ROLE Admin
+                     
+                     email = WilliamShakespeare@FUMiniHotel.org
+                     passwork = 123@
+                     ROLE User
+             
+             </remarks>
+        </member>
         <member name="M:StudentNameApi.Controllers.RoomInformationController.GetRoomInformation(System.String,System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Byte},System.Nullable{System.Decimal},System.String,System.Nullable{System.Boolean},System.String[],System.Int32,System.Int32)">
-            <summary>
-            Get room information based on provided filters.
-            </summary>
-            <param name="keyword"></param>
-            <param name="id"></param>
-            <param name="RoomNumber"></param>
-            <param name="RoomDetailDescription"></param>
-            <param name="RoomMaxCapacity"></param>
-            <param name="RoomTypeId"></param>
-            <param name="RoomStatus"></param>
-            <param name="RoomPricePerDay"></param>
-            <param name="orderBy"></param>
-            <param name="isAscending"></param>
-            <param name="includeProperties"></param>
-            <param name="pageIndex"></param>
-            <param name="pageSize"></param>
-            <returns>
-            A collection of room information matching the specified criteria.
-            </returns>
-            <remarks>
-            Sample request:
-                GET 
-                id=1
-                RoomNumber=101
-                RoomDetailDescription=Deluxe Room
-                RoomMaxCapacity=2
-                RoomTypeId=3
-                RoomStatus=1
-                RoomPricePerDay=100.00
-                orderBy=RoomNumber
-                isAscending=true
-                includeProperties=RoomType
-                pageIndex=0
-                pageSize=10
-            </remarks>
+             <summary>
+             Get room information based on provided filters.
+             </summary>
+             <param name="keyword"></param>
+             <param name="id"></param>
+             <param name="RoomNumber"></param>
+             <param name="RoomDetailDescription"></param>
+             <param name="RoomMaxCapacity"></param>
+             <param name="RoomTypeId"></param>
+             <param name="RoomStatus"></param>
+             <param name="RoomPricePerDay"></param>
+             <param name="orderBy"></param>
+             <param name="isAscending"></param>
+             <param name="includeProperties"></param>
+             <param name="pageIndex"></param>
+             <param name="pageSize"></param>
+             <remarks>
+                 Sample request:
+            
+                     GET 
+                     keyword=1
+                     id=1
+                     RoomNumber=101
+                     RoomDetailDescription=Deluxe Room
+                     RoomMaxCapacity=2
+                     RoomTypeId=3
+                     RoomStatus=1
+                     RoomPricePerDay=100.00
+                     orderBy=RoomNumber
+                     isAscending=true
+                     includeProperties=RoomType
+                     pageIndex=0
+                     pageSize=10
+             </remarks>
         </member>
         <member name="M:StudentNameApi.Controllers.RoomInformationController.GetRoomInformationById(System.Int32)">
             <summary>
@@ -279,18 +309,18 @@
             <param name="requestCreateModel">The model containing information to create the room.</param>
             <returns>The newly created room information.</returns>
             <remarks>
-            Sample request:
-                POST 
-                {
+                Sample request:
+                  
+                    POST 
+                    {
                     "RoomNumber": "101",
                     "RoomDetailDescription": "Deluxe Room",
                     "RoomMaxCapacity": 2,
                     "RoomTypeId": 3,
                     "RoomStatus": 1,
                     "RoomPricePerDay": 100.00
-                }
-            </remarks>
-            <response code="201">Created new room information successfully.</response>
+                    }
+             </remarks>
         </member>
         <member name="M:StudentNameApi.Controllers.RoomInformationController.UpdateRoomInformation(System.Int32,Service.ViewModel.Request.RoomInformationRequestCreate)">
             <summary>
@@ -300,16 +330,17 @@
             <param name="requestModel">The model containing updated information for the room.</param>
             <returns>The updated room information.</returns>
             <remarks>
-            Sample request:
-            PUT
-            {
-            "RoomNumber": "101",
-            "RoomDetailDescription": "Spacious room with city view",
-            "RoomMaxCapacity": 2,
-            "RoomTypeId": 1,
-            "RoomStatus": 1,
-            "RoomPricePerDay": 120.00
-            }
+                Sample request:
+                  
+                    PUT
+                    {
+                    "RoomNumber": "101",
+                    "RoomDetailDescription": "Spacious room with city view",
+                    "RoomMaxCapacity": 2,
+                    "RoomTypeId": 1,
+                    "RoomStatus": 1,
+                    "RoomPricePerDay": 120.00
+                    }
             </remarks>
         </member>
         <member name="M:StudentNameApi.Controllers.RoomInformationController.DeleteRoomInformation(System.Int32)">
@@ -346,17 +377,17 @@
              <remarks>
              Sample request:
             
-                 GET 
-                 keyword=double
-                 id=1
-                 roomTypeName=Double
-                 typeDescription=Spacious
-                 typeNote=Extra
-                 orderBy=roomTypeName
-                 isAscending=true
-                 includeProperties=Rooms
-                 pageIndex=0
-                 pageSize=10
+                    GET 
+                    keyword=double
+                    id=1
+                    roomTypeName=Double
+                    typeDescription=Spacious
+                    typeNote=Extra
+                    orderBy=roomTypeName
+                    isAscending=true
+                    includeProperties=Rooms
+                    pageIndex=0
+                    pageSize=10
              </remarks>
         </member>
         <member name="M:StudentNameApi.Controllers.RoomTypeController.GetRoomType(System.Int32)">
@@ -368,8 +399,8 @@
              <remarks>
              Sample request:
             
-                 GET 
-                 id = 1
+                   GET 
+                   id = 1
              </remarks>
         </member>
     </members>
