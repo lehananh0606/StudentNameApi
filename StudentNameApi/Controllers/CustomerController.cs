@@ -1,8 +1,10 @@
 ﻿using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.IServices;
-using Service.ViewModel.Requet;
+using Service.ViewModel.Request;
 using System.Net;
+using System.Security.Claims;
 
 namespace StudentNameApi.Controllers
 {
@@ -54,6 +56,7 @@ namespace StudentNameApi.Controllers
         ///         pageSize=10
         /// </remarks>
         [HttpGet("customers")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetCustomers([FromQuery] string? keyword,
             [FromQuery] int? id,
             [FromQuery] string? CustomerFullName,
@@ -96,6 +99,7 @@ namespace StudentNameApi.Controllers
         ///         id = 1
         /// </remarks>
         [HttpGet("customers/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetCustomer(int id)
         {
             var response = await _customerService.GetById(id);
@@ -150,6 +154,7 @@ namespace StudentNameApi.Controllers
         ///     }
         /// </remarks>
         [HttpPut("customers/{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateCustomer(int id, [FromBody] AccountRequestCreate requestModel)
         {
             var response = await _customerService.Update(id, requestModel);
@@ -163,6 +168,7 @@ namespace StudentNameApi.Controllers
         /// <param name="id">The ID of the customer to delete.</param>
         /// <returns>The result of the deletion operation.</returns>
         [HttpDelete("customers/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
             var response = await _customerService.Delete(id);
@@ -178,10 +184,37 @@ namespace StudentNameApi.Controllers
         /// <param name="pageSize">The size of the page.</param>
         /// <returns>A collection of customers matching the search criteria.</returns>
         [HttpGet("customers/search")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> SearchCustomers([FromQuery] string keyword, [FromQuery] int pageIndex = 0, [FromQuery] int pageSize = 10)
         {
             var response = await _customerService.Search(keyword, pageIndex, pageSize);
             return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
         }
+
+        //[HttpGet("profile")]
+        //[Authorize(Roles = "User")]
+        //public async Task<IActionResult> GetProfile()
+        //{
+        //    // Get the email of the currently authenticated user
+        //    var userEmail = HttpContext.User.FindFirstValue(ClaimTypes.Email);
+
+        //    // Find the customer profile based on the email
+        //    var response = await _customerService.GetByEmail(userEmail);
+
+        //    return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
+        //}
+
+        //[HttpPut("profile")]
+        //[Authorize(Roles = "User")]
+        //public async Task<IActionResult> UpdateProfile([FromBody] AccountRequestCreate requestModel)
+        //{
+        //    // Get the email of the currently authenticated user
+        //    var userEmail = HttpContext.User.FindFirstValue(ClaimTypes.Email);
+
+        //    // Find the customer profile based on the email
+        //    var response = await _customerService.UpdateByEmail(userEmail, requestModel);
+
+        //    return response.IsError ? HandleErrorResponse(response.Errors) : Ok(response);
+        //}
     }
 }

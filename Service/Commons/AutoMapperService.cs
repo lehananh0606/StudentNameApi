@@ -14,8 +14,13 @@ namespace Service.Commons
         public AutoMapperService(
         )
         {
-            CreateMap<AccountRequestCreate, Customer>();
-            CreateMap<Customer, AccountResponse>();
+            CreateMap<LoginRequest, Customer>().ReverseMap();
+            CreateMap<AccountRequestCreate, Customer>()
+                .ForMember(dest => dest.CustomerBirthday, opt => opt.MapFrom(src => DateOnly.FromDateTime(src.CustomerBirthday)));
+            CreateMap<Customer, LoginResponse>().ReverseMap();
+            CreateMap<Customer, AccountResponse>().ReverseMap();
+
+           
 
             CreateMap<RoomTypeRequestCreate, RoomType>();
             CreateMap<RoomType, RoomTypeResponse>();

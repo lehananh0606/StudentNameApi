@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.IServices;
 using Service.ViewModel.Requet;
@@ -48,6 +49,7 @@ namespace StudentNameApi.Controllers
         ///     pageSize=10
         /// </remarks>
         [HttpGet("booking-details")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetBookingDetails([FromQuery] string? keyword,
             [FromQuery] int? id,
             [FromQuery] int? roomId,
@@ -79,8 +81,8 @@ namespace StudentNameApi.Controllers
         /// <summary>
         /// Get booking detail by ID.
         /// </summary>
-        /// <param name="id">The ID of the booking detail.</param>
-        /// <returns>The booking detail with the specified ID.</returns>
+        /// <param name="id">The ID of the booking reservation.</param>
+        /// <returns>The booking detail with the booking reservation ID.</returns>
         /// <remarks>
         /// Sample request:
         ///
@@ -88,6 +90,7 @@ namespace StudentNameApi.Controllers
         ///     id = 1
         /// </remarks>
         [HttpGet("booking-details/{bookingReservationId:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetBookingDetail(int bookingReservationId)
         {
             var response = await _bookingDetailService.GetByBookingReservationId(bookingReservationId);

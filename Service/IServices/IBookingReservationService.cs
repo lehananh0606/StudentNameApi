@@ -13,13 +13,13 @@ namespace Service.IServices
     public interface IBookingReservationService
     {
         Task<OperationResult<IEnumerable<BookingReservationResponse>>> GetAllBookingReservations(
-            bool? isAscending,
-            string? orderBy = null,
-            Expression<Func<BookingReservation, bool>>? filter = null,
-            string[]? includeProperties = null,
-            int pageIndex = 0,
-            int pageSize = 10);
-
+    bool? isAscending,
+    string? orderBy = null,
+    Expression<Func<BookingReservation, bool>>? filter = null,
+    string[]? includeProperties = null,
+    int pageIndex = 0,
+    int pageSize = 10,
+    bool sortByDescending = true);
         Task<OperationResult<BookingReservationResponse>> GetBookingReservationById(int bookingReservationId);
 
         Task<OperationResult<BookingReservationResponse>> CreateBookingReservation(BookingReservationRequestCreate requestCreate);

@@ -40,8 +40,8 @@
              <summary>
              Get booking detail by ID.
              </summary>
-             <param name="id">The ID of the booking detail.</param>
-             <returns>The booking detail with the specified ID.</returns>
+             <param name="id">The ID of the booking reservation.</param>
+             <returns>The booking detail with the booking reservation ID.</returns>
              <remarks>
              Sample request:
             
@@ -89,7 +89,7 @@
             <param name="id">The ID of the booking reservation.</param>
             <returns>The booking reservation with the specified ID.</returns>
         </member>
-        <member name="M:StudentNameApi.Controllers.BookingReservationController.CreateBookingReservation(Service.ViewModel.Requet.BookingReservationRequestCreate)">
+        <member name="M:StudentNameApi.Controllers.BookingReservationController.CreateBookingReservation(Service.ViewModel.Request.BookingReservationRequestCreate)">
             <summary>
             Create a new booking reservation.
             </summary>
@@ -107,7 +107,7 @@
             </remarks>
             <response code="201">Created new booking reservation successfully.</response>
         </member>
-        <member name="M:StudentNameApi.Controllers.BookingReservationController.UpdateBookingReservation(System.Int32,Service.ViewModel.Requet.BookingReservationRequestCreate)">
+        <member name="M:StudentNameApi.Controllers.BookingReservationController.UpdateBookingReservation(System.Int32,Service.ViewModel.Request.BookingReservationRequestCreate)">
             <summary>
             Update an existing booking reservation.
             </summary>
@@ -172,7 +172,7 @@
                      id = 1
              </remarks>
         </member>
-        <member name="M:StudentNameApi.Controllers.CustomerController.CreateCustomer(Service.ViewModel.Requet.AccountRequestCreate)">
+        <member name="M:StudentNameApi.Controllers.CustomerController.CreateCustomer(Service.ViewModel.Request.AccountRequestCreate)">
              <summary>
              create a customer
              </summary>
@@ -192,7 +192,7 @@
              </remarks>
              <response code="201">Created new customer successfully.</response>
         </member>
-        <member name="M:StudentNameApi.Controllers.CustomerController.UpdateCustomer(System.Int32,Service.ViewModel.Requet.AccountRequestCreate)">
+        <member name="M:StudentNameApi.Controllers.CustomerController.UpdateCustomer(System.Int32,Service.ViewModel.Request.AccountRequestCreate)">
              <summary>
              Update customer information.
              </summary>

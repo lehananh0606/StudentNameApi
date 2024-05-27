@@ -53,5 +53,28 @@ namespace Service.Commons
         {
             HandleError(StatusCode.UnknownError, foodIdAndSupplierIdCannotBeTheSame);
         }
+
+        public static OperationResult<T> Success(T payload, StatusCode statusCode = StatusCode.Ok, string? message = null)
+        {
+            return new OperationResult<T>
+            {
+                StatusCode = statusCode,
+                Message = message ?? "Success",
+                IsError = false,
+                Payload = payload
+            };
+        }
+
+        public static OperationResult<T> Fail(StatusCode statusCode, string message)
+        {
+            var result = new OperationResult<T>
+            {
+                StatusCode = statusCode,
+                Message = message,
+                IsError = true
+            };
+            result.Errors.Add(new Error { Code = statusCode, Message = message });
+            return result;
+        }
     }
 }

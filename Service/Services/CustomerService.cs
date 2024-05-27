@@ -1,14 +1,21 @@
 ﻿using AutoMapper;
+using Azure;
 using Data.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Repository.UnitOfWork;
 using Service.Commons;
 using Service.IServices;
+using Service.ViewModel.Request;
 using Service.ViewModel.Requet;
 using Service.ViewModel.Response;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,14 +23,85 @@ namespace Service.Services
 {
     public class CustomerService : ICustomerService
     {
-        
+        private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-        public CustomerService(IMapper mapper, IUnitOfWork unitOfWork)
+        public CustomerService(IMapper mapper, IUnitOfWork unitOfWork, IConfiguration configuration)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _configuration = configuration;
         }
+
+        public async Task<(string Token, LoginResponse loginResponse)> AuthorizeUser(LoginRequest loginRequest)
+        {
+            var member = _unitOfWork.customerRepository
+                .Get(filter: a => a.EmailAddress == loginRequest.EmailAddress
+                && a.Password == loginRequest.Password && a.CustomerStatus == 1).FirstOrDefault();
+            if (member != null)
+            {
+                string token = GenerateToken(member);
+                var adminResponse = _mapper.Map<LoginResponse>(member);
+                return (token, adminResponse);
+            }
+
+            var adminEmail = _configuration["AdminUser:EmailAddress"];
+            var adminPassword = _configuration["AdminUser:Password"];
+
+            if (loginRequest.EmailAddress == adminEmail && loginRequest.Password == adminPassword)
+            {
+                var defaultAdminResponse = _mapper.Map<LoginResponse>(member);
+
+                string token = GenerateDefaultToken();
+
+                return (token, defaultAdminResponse);
+            }
+
+
+            return (null, null);
+        }
+
+        private string GenerateDefaultToken()
+        {
+            var claims = new List<Claim>
+    {
+                new Claim("EmailAddress", _configuration["AdminUser:EmailAddress"]),
+        new Claim("Role", _configuration["AdminUser:Role"]),
+    };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:Key").Value));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.Now.AddDays(1),
+                signingCredentials: creds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        private string GenerateToken(Customer info)
+        {
+            List<Claim> claims = new List<Claim>()
+        {
+                new Claim(ClaimTypes.NameIdentifier, info.CustomerId.ToString()),
+            new Claim("EmailAddress", info.EmailAddress),
+            };
+
+            var role = _configuration["DefaultUserRole"];
+            claims.Add(new Claim("Role", role));
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("Jwt:Key").Value));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.Now.AddDays(1),
+                signingCredentials: creds);
+
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            return jwt;
+        }
+
 
         public Task<OperationResult<IEnumerable<AccountResponse>>> GetAll(bool? isAscending,
             string? orderBy = null,
@@ -212,5 +290,36 @@ namespace Service.Services
 
             return result;
         }
+
+        //public async Task<OperationResult<AccountResponse>> GetByEmail(string email)
+        //{
+        //    var customer = await _unitOfWork.customerRepository.GetByEmailAsync(email);
+        //    if (customer == null)
+        //    {
+        //        return OperationResult<AccountResponse>.Fail(StatusCode.NotFound, "Customer not found.");
+        //    }
+
+        //    var customerResponse = _mapper.Map<AccountResponse>(customer);
+        //    return OperationResult<AccountResponse>.Success(customerResponse);
+        //}
+
+        //public async Task<OperationResult<AccountResponse>> UpdateByEmail(string email, AccountRequestCreate requestModel)
+        //{
+        //    var existingCustomer = await _unitOfWork.customerRepository.GetByEmailAsync(email);
+        //    if (existingCustomer == null)
+        //    {
+        //        return OperationResult<AccountResponse>.Fail(StatusCode.NotFound, "Customer not found.");
+        //    }
+
+        //    // Update customer properties based on the request model
+        //    _mapper.Map(requestModel, existingCustomer);
+
+        //    _unitOfWork.customerRepository.Update(existingCustomer);
+        //    await _unitOfWork.SaveChangesAsync();
+
+        //    var updatedCustomerResponse = _mapper.Map<AccountResponse>(existingCustomer);
+        //    return OperationResult<AccountResponse>.Success(updatedCustomerResponse);
+        //}
+
     }
 }

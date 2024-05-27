@@ -16,6 +16,12 @@ using Repository.Repositories;
 using Service.IServices;
 using Microsoft.Extensions.Options;
 using System.Reflection;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Security.Claims;
 
 namespace StudentNameApi
 {
@@ -28,14 +34,30 @@ namespace StudentNameApi
             // Add services to the container.
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(c =>
+            builder.Services.AddSwaggerGen(options =>
             {
-                
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Your API Name", Version = "v1" });
+                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                {
+                    Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
+                    In = ParameterLocation.Header,
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey
+                });
 
-                // using System.Reflection;
-                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+                options.OperationFilter<SecurityRequirementsOperationFilter>();
+            });
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
+            {
+                option.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("Jwt:Key").Value)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    RoleClaimType = "Role",
+                    NameClaimType = ClaimTypes.NameIdentifier
+                };
             });
 
             string dbContext = builder.Configuration.GetConnectionString("DefaultConnection");

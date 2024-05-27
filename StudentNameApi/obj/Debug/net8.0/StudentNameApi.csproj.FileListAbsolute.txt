@@ -178,3 +178,8 @@ E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.AspNetCo
 E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Scrutor.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
+E:\Ki 8\prn231\StudentNameApi\StudentNameApi\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

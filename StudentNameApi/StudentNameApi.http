@@ -6,3 +6,5 @@ Accept: application/json
 ###
 GET http://localhost:5191/api/customer
 
+POST http://localhost:5191/api/auth/login
+

@@ -12,6 +12,7 @@ namespace Repository.IRepositories
     public interface ICustomerRepository : IGenericRepository<Customer>
     {
         Task<IEnumerable<Customer>> FindAsync(Expression<Func<Customer, bool>> predicate, int pageIndex, int pageSize);
+        Task<Customer> GetByEmailAsync(string emailAddress);
     }
 
 

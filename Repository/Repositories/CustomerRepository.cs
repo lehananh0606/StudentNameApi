@@ -26,5 +26,10 @@ namespace Repository.Repositories
                 .Take(pageSize)
                 .ToListAsync();
         }
+
+        public async Task<Customer> GetByEmailAsync(string emailAddress)
+        {
+            return await _dbSet.FirstOrDefaultAsync(c => c.EmailAddress == emailAddress);
+        }
     }
 }

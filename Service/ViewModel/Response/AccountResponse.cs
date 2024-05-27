@@ -15,6 +15,7 @@ namespace Service.ViewModel.Response
         public string? Telephone { get; set; }
 
         public string EmailAddress { get; set; } = null!;
+        public DateOnly? CustomerBirthday { get; set; }
 
 
     }

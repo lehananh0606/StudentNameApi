@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.ViewModel.Requet
+namespace Service.ViewModel.Request
 {
     public class AccountRequestCreate
     {
@@ -21,7 +21,7 @@ namespace Service.ViewModel.Requet
         public string EmailAddress { get; set; } = null!;
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
-        public DateOnly? CustomerBirthday { get; set; }
+        public DateTime CustomerBirthday { get; set; }
 
         [Required]
         public string? Password { get; set; }

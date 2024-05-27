@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.IServices;
 using Service.ViewModel.Request;
@@ -121,6 +122,7 @@ namespace StudentNameApi.Controllers
         /// </remarks>
         /// <response code="201">Created new room information successfully.</response>
         [HttpPost("rooms")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateRoomInformation([FromBody] RoomInformationRequestCreate requestCreateModel)
         {
             var response = await _roomInformationService.Create(requestCreateModel);
@@ -149,6 +151,7 @@ namespace StudentNameApi.Controllers
         /// }
         /// </remarks>
         [HttpPut("rooms/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateRoomInformation(int id, [FromBody] RoomInformationRequestCreate requestModel)
         {
             var response = await _roomInformationService.Update(id, requestModel);
@@ -162,6 +165,7 @@ namespace StudentNameApi.Controllers
         /// <param name="id">The ID of the room to delete.</param>
         /// <returns>The result of the deletion operation.</returns>
         [HttpDelete("rooms/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteRoomInformation(int id)
         {
             var response = await _roomInformationService.Delete(id);

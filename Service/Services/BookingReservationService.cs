@@ -24,18 +24,30 @@ namespace Service.Services
         }
 
         public async Task<OperationResult<IEnumerable<BookingReservationResponse>>> GetAllBookingReservations(
-            bool? isAscending,
-            string? orderBy = null,
-            Expression<Func<BookingReservation, bool>>? filter = null,
-            string[]? includeProperties = null,
-            int pageIndex = 0,
-            int pageSize = 10)
+    bool? isAscending,
+    string? orderBy = null,
+    Expression<Func<BookingReservation, bool>>? filter = null,
+    string[]? includeProperties = null,
+    int pageIndex = 0,
+    int pageSize = 10,
+    bool sortByDescending = true) // Thêm tham số mới để xác định trật tự sắp xếp
         {
             var result = new OperationResult<IEnumerable<BookingReservationResponse>>();
             try
             {
                 var entities = _unitOfWork.bookingRepository.FilterAll(
                     isAscending, orderBy, filter, includeProperties, pageIndex, pageSize);
+
+                // Sắp xếp các thực thể theo trật tự mong muốn
+                if (sortByDescending)
+                {
+                    entities = entities.OrderByDescending(x => x.TotalPrice); 
+                }
+                else
+                {
+                    entities = entities.OrderBy(x => x.TotalPrice); 
+                }
+
                 result.Payload = _mapper.Map<IEnumerable<BookingReservationResponse>>(entities);
                 result.StatusCode = StatusCode.Ok;
                 result.Message = "Get all booking reservations successfully";

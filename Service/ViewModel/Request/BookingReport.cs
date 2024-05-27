@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.ViewModel.Requet
+namespace Service.ViewModel.Request
 {
-    public class BookingReservationRequestCreate
+
+    public class BookingReport
     {
-        public DateOnly? BookingDate { get; set; }
+        public int BookingReservationId { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public decimal? ActualPrice { get; set; }
         public decimal? TotalPrice { get; set; }
         public int CustomerId { get; set; }
         public byte? BookingStatus { get; set; }
     }
+
 }

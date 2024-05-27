@@ -1,4 +1,5 @@
 ﻿using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Service.IServices;
 using Service.ViewModel.Request;
@@ -52,6 +53,7 @@ namespace StudentNameApi.Controllers
         ///     pageSize=10
         /// </remarks>
         [HttpGet("booking-reservations")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetBookingReservations([FromQuery] string? keyword,
             [FromQuery] int? id,
             [FromQuery] DateOnly? bookingDate,
@@ -90,6 +92,7 @@ namespace StudentNameApi.Controllers
         /// <param name="id">The ID of the booking reservation.</param>
         /// <returns>The booking reservation with the specified ID.</returns>
         [HttpGet("booking-reservations/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetBookingReservation(int id)
         {
             var response = await _bookingReservationService.GetBookingReservationById(id);
@@ -114,6 +117,7 @@ namespace StudentNameApi.Controllers
         /// </remarks>
         /// <response code="201">Created new booking reservation successfully.</response>
         [HttpPost("booking-reservations")]
+        
         public async Task<IActionResult> CreateBookingReservation([FromBody] BookingReservationRequestCreate requestModel)
         {
             var response = await _bookingReservationService.CreateBookingReservation(requestModel);
@@ -127,6 +131,7 @@ namespace StudentNameApi.Controllers
         /// <param name="requestModel">The model containing updated information.</param>
         /// <returns>The updated booking reservation.</returns>
         [HttpPut("booking-reservations/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateBookingReservation(int id, [FromBody] BookingReservationRequestCreate requestModel)
         {
             var response = await _bookingReservationService.UpdateBookingReservation(id, requestModel);
@@ -140,6 +145,7 @@ namespace StudentNameApi.Controllers
         /// <param name="id">The ID of the booking reservation to delete.</param>
         /// <returns>An action result indicating success or failure.</returns>
         [HttpDelete("booking-reservations/{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteBookingReservation(int id)
         {
             var response = await _bookingReservationService.DeleteBookingReservation(id);
